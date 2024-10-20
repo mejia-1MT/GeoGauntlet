@@ -1,0 +1,50 @@
+@keyframes slides { 
+  from {
+    transform: translateY(0); /* Start at original position */
+  }
+  to {
+    transform: translateY(-100%); /* Move up by 50% */
+  }
+}
+
+.population-slide { 
+  animation: slides 1s ease forwards; /* Add forwards to retain the end state */
+  transition: transform 0.3s ease; 
+}
+
+.population-slider { 
+  height: 100vh;
+  overflow: hidden;
+}
+
+.population-choices {
+  height: 50%;
+  position: relative;
+  background-size: cover; 
+  background-position: center; 
+}
+
+
+.population-inset { 
+  position: absolute;
+  inset: 0;
+  background-color: #0000003d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.population-country-name { 
+  color: var(--white);
+  font-size: var(--small);
+  
+}
+
+.population-country-population { 
+  color: var(--dark);
+  font-size: var(--medium);
+}
+
+
