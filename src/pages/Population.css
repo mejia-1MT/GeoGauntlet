@@ -1,4 +1,9 @@
-@keyframes slides { 
+.Population {
+  display: relative;
+  color: var(--white);
+}
+
+@keyframes slides {
   from {
     transform: translateY(0); /* Start at original position */
   }
@@ -7,12 +12,12 @@
   }
 }
 
-.population-slide { 
+.population-slide {
   animation: slides 1s ease forwards; /* Add forwards to retain the end state */
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
 }
 
-.population-slider { 
+.population-slider {
   height: 100vh;
   overflow: hidden;
 }
@@ -20,31 +25,67 @@
 .population-choices {
   height: 50%;
   position: relative;
-  background-size: cover; 
-  background-position: center; 
+  background-size: cover;
+  background-position: center;
 }
 
-
-.population-inset { 
+.population-inset {
   position: absolute;
   inset: 0;
-  background-color: #0000003d;
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  gap: 1rem;
 }
 
-.population-country-name { 
-  color: var(--white);
+.population-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.population-buttons button {
+  all: unset;
+  padding: 1rem 3rem;
+  background-color: transparent;
+  border: solid 1px;
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.population-buttons button > * {
+  color: var(--light);
+  fill: var(--light);
+}
+
+.population-buttons button:hover {
+  border: solid 1px var(--pop);
+  background-color: var(--pop);
+}
+
+.population-country-name {
   font-size: var(--small);
-  
 }
 
-.population-country-population { 
+.population-country-population {
   color: var(--dark);
   font-size: var(--medium);
 }
 
+@keyframes population-up {
+  to {
+    transform: translate(0%);
+    opacity: 1;
+  }
+}
 
+.from-under {
+  transform: translateY(50%);
+  opacity: 0;
+  animation: population-up 1s ease-in-out forwards;
+}

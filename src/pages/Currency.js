@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
 
 const Currency = () => {
-  return (
-    <div>Currency</div>
-  )
-}
+  console.log(["St. Peter Port"].includes("a"));
+  return <div>Currency</div>;
+};
 
-export default Currency
+export default Currency;

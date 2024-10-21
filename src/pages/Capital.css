@@ -1,0 +1,45 @@
+.Capital {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.capital-guess {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.capital-guess > * {
+  transform: translateY(-5rem);
+}
+
+.capital-input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.capital-input {
+  padding: 1rem;
+  outline: none;
+}
+
+.capital-name {
+  margin: 0;
+}
+
+.capital-button {
+  position: absolute;
+  right: 0;
+}
+
+.capital-suggestions {
+  position: absolute;
+  top: 100%;
+}

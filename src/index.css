@@ -9,8 +9,11 @@
   --light: #f5f5dc;
   --dark: #f5deb3;
   --pop: #e1a95f;
+  --green: #69c769;
+  --red: #e46a4a;
 
   /* Font Sizes  */
+  --smaller: 1rem;
   --small: 1.5rem;
   --medium: 2.5rem;
   --large: 3rem;
