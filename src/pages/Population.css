@@ -3,20 +3,6 @@
   color: var(--white);
 }
 
-@keyframes slides {
-  from {
-    transform: translateY(0); /* Start at original position */
-  }
-  to {
-    transform: translateY(-100%); /* Move up by 50% */
-  }
-}
-
-.population-slide {
-  animation: slides 1s ease forwards; /* Add forwards to retain the end state */
-  transition: transform 0.3s ease;
-}
-
 .population-slider {
   height: 100vh;
   overflow: hidden;
@@ -27,6 +13,20 @@
   position: relative;
   background-size: cover;
   background-position: center;
+  flex-shrink: 0;
+}
+
+@media (orientation: landscape) {
+  .population-slider {
+    width: 100vw;
+    display: flex;
+  }
+
+  .population-choices {
+    width: 50%;
+    height: 100%;
+    flex-shrink: 0;
+  }
 }
 
 .population-inset {
@@ -70,22 +70,10 @@
 
 .population-country-name {
   font-size: var(--small);
+  transition: transform 0.3s ease;
 }
 
 .population-country-population {
   color: var(--dark);
   font-size: var(--medium);
-}
-
-@keyframes population-up {
-  to {
-    transform: translate(0%);
-    opacity: 1;
-  }
-}
-
-.from-under {
-  transform: translateY(50%);
-  opacity: 0;
-  animation: population-up 1s ease-in-out forwards;
 }

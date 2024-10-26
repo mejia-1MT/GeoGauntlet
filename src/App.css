@@ -3,6 +3,7 @@
 .best-score,
 .vs {
   position: absolute;
+  font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
 .back {
@@ -28,11 +29,13 @@
 .score {
   top: 1rem;
   right: 1rem;
+  color: var(--light);
 }
 
 .best-score {
   bottom: 1rem;
   left: 1rem;
+  color: var(--light);
 }
 
 .vs {
@@ -45,4 +48,42 @@
   font-weight: 600;
   font-size: var(--small);
   padding: 1.5rem;
+}
+
+@keyframes answerUp {
+  to {
+    transform: translate(0%);
+    opacity: 1;
+  }
+}
+
+.from-under {
+  transform: translateY(50%);
+  opacity: 0;
+  animation: answerUp 1s ease-in-out forwards;
+}
+
+@keyframes slides {
+  from {
+    transform: translateY(0); /* Start at original position */
+  }
+  to {
+    transform: translateY(-100%); /* Move up by 50% */
+  }
+}
+
+.population-slide {
+  animation: slides 1s ease forwards; /* Add forwards to retain the end state */
+  transition: transform 0.3s ease;
+}
+
+@media (orientation: landscape) {
+  @keyframes slides {
+    from {
+      transform: translateX(0); /* Start at original position */
+    }
+    to {
+      transform: translateX(-100%); /* Move up by 50% */
+    }
+  }
 }

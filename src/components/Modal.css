@@ -8,13 +8,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--light);
 }
 
 .modal-content {
-  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This will space items evenly */
+  align-items: center;
   padding: 20px;
   border-radius: 5px;
   text-align: center;
+  position: relative;
+  width: clamp(300px, 50%, 500px);
+  aspect-ratio: 4/5;
+  background-size: cover;
+  background-position: center;
+}
+
+.modal-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal-content > * {
+  z-index: 1;
 }
 
 .modal-content h2 {
@@ -23,4 +46,50 @@
 
 .modal-content button {
   margin: 5px;
+}
+
+.modal-message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-message {
+  width: 80%;
+  font-size: clamp(1rem, 4vw, 2rem);
+}
+
+.modal-text {
+  width: 80%;
+  font-size: clamp(0.75rem, 3vw, 1.5rem);
+}
+
+.modal-score {
+  font-size: clamp(1rem, 5vw, 3rem);
+  color: var(--pop);
+  margin: 0;
+}
+
+.modal-buttons {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+
+  & button {
+    all: unset;
+  }
+  & .modal-button {
+    margin-top: -1rem;
+    padding: clamp(0.5rem, 2vw, 1rem) clamp(1.5rem, 5vw, 3rem);
+    text-decoration: none;
+    background-color: var(--black);
+    font-size: clamp(0.75rem, 1vw, 1rem);
+    color: var(--light);
+    border-radius: 2rem;
+  }
+
+  & .modal-button:hover {
+    background-color: var(--pop);
+  }
 }

@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Capital from "./pages/Capital";
 import Flag from "./pages/Flag";
-import Currency from "./pages/Currency";
 import Population from "./pages/Population";
 
 function App() {
@@ -27,10 +26,7 @@ function App() {
           path="/flag"
           element={<Flag key={key} handleTryAgain={handleTryAgain} />}
         />
-        <Route
-          path="/currency"
-          element={<Currency key={key} handleTryAgain={handleTryAgain} />}
-        />
+
         <Route
           path="/population"
           element={<Population key={key} handleTryAgain={handleTryAgain} />}

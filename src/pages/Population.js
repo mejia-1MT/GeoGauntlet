@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Population.css";
+import { fetchGif } from "../utilities/FetchGif";
 
 import BackIcon from "../assets/arrow-left-01-stroke-rounded";
 import Triangle from "../assets/triangle-stroke-rounded";
@@ -18,7 +19,7 @@ const Population = ({ handleTryAgain }) => {
   const [animate, setAnimate] = useState(null);
   const [populationAnimate, setPopulationAnimate] = useState(false);
   const [modalVisible, setModalVisible] = useState(false); // State for modal visibility
-
+  const [modalGifUrl, setModalGifUrl] = useState(""); // State for GIF URL
   const fillCountries = () => {
     const newList = [];
 
@@ -35,7 +36,7 @@ const Population = ({ handleTryAgain }) => {
     fillCountries();
   }, []); // Only fill countries on mount
 
-  const handleAnswer = (answer, index) => {
+  const handleAnswer = async (answer, index) => {
     setAnswered(true);
     setClickedIndex(index);
     const correctAnswer =
@@ -65,9 +66,11 @@ const Population = ({ handleTryAgain }) => {
         }, 1000);
       }, 2000);
     } else {
-      setTimeout(() => {
-        setModalVisible(true); // Open the modal
-      }, 2000);
+      const gifUrl = await fetchGif(); // Fetch the GIF URL
+      if (gifUrl) {
+        setModalVisible(true);
+        setModalGifUrl(gifUrl); // Store the GIF URL in state
+      }
     }
   };
 
@@ -134,11 +137,11 @@ const Population = ({ handleTryAgain }) => {
         <div className="vs">vs</div>
       </div>
 
-      {modalVisible && ( // Render the modal when visible
+      {modalVisible && (
         <Modal
-          message="Incorrect! Try Again."
-          onClose={handleModalClose}
+          score={score}
           onTryAgain={handleTryAgainClick}
+          gifUrl={modalGifUrl}
         />
       )}
     </div>

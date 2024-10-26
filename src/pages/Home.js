@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import './Home.css'
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 const Home = () => {
   const [countries, setCountries] = useState([]);
@@ -10,6 +10,7 @@ const Home = () => {
       try {
         const response = await fetch(`https://restcountries.com/v3.1/all`);
         const data = await response.json();
+        console.log(data);
 
         const countryNames = data.map((country) => {
           return {
@@ -31,18 +32,42 @@ const Home = () => {
   }, []);
 
   return (
-    <div className='Home'>  
-    <Link to='/' className="title"><h1>GeoGaunlet</h1></Link>
+    <div className="Home">
+      <Link to="/" className="title">
+        <h1>GeoGaunlet</h1>
+      </Link>
 
-    <div className="games">
-      <Link to='/capital' state={{countries: countries}}><button>Capitals</button></Link>
-      <Link to='/flag' state={{countries: countries}}><button>Flag</button></Link>
-      <Link to='/currency' state={{countries: countries}}><button>Currency</button></Link>
-      <Link to='/population' state={{countries: countries}}><button>Population</button></Link>
+      <p className="description">
+        {" "}
+        Test your geography knowledge on the following categories! 🌍
+      </p>
 
+      <div className="games">
+        <Link to="/capital" className="game" state={{ countries: countries }}>
+          <button>Capitals</button>
+        </Link>
+        <Link to="/flag" className="game" state={{ countries: countries }}>
+          <button>Flag</button>
+        </Link>
+
+        <Link
+          to="/population"
+          className="game"
+          state={{ countries: countries }}
+        >
+          <button>Population</button>
+        </Link>
+      </div>
+
+      <div className="advisory">
+        <p>GeoGaunlet v1.0</p>
+        <p>||</p>
+        <p>Some info used are dated</p>
+        <p>||</p>
+        <p>© Meji </p>
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
