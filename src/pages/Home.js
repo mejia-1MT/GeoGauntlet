@@ -62,7 +62,7 @@ const Home = () => {
       <div className="advisory">
         <p>GeoGaunlet v1.0</p>
         <p>||</p>
-        <p>Some info used are dated</p>
+        <p>some info used are dated</p>
         <p>||</p>
         <p>© Meji </p>
       </div>
