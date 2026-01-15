@@ -70,3 +70,8 @@
   text-align: center;
   font-size: 12px;
 }
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}

@@ -8,8 +8,11 @@ const Home = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`https://restcountries.com/v3.1/all`);
+        const response = await fetch(
+          `https://restcountries.com/v3.1/all?fields=name,population,flags,capital,currencies`
+        );
         const data = await response.json();
+        console.log("***Logging fetched data from the API***");
         console.log(data);
 
         const countryNames = data.map((country) => {
@@ -30,6 +33,8 @@ const Home = () => {
 
     fetchData();
   }, []);
+
+  console.log(countries);
 
   return (
     <div className="Home">
@@ -60,9 +65,19 @@ const Home = () => {
       </div>
 
       <div className="advisory">
-        <p>GeoGaunlet v1.0</p>
+        <p>GeoGaunlet v2.0</p>
         <p>||</p>
-        <p>some info used are dated</p>
+        <p>
+          info used are from{" "}
+          <a
+            className="link"
+            href="https://restcountries.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://restcountries.com
+          </a>
+        </p>
         <p>||</p>
         <p>© Meji </p>
       </div>
