@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Home.css";
+import "./Menu.css";
 
-const Home = () => {
+const Option = ({ openMenu }) => {
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
@@ -36,19 +36,16 @@ const Home = () => {
 
   console.log(countries);
 
+  if (!openMenu) return null;
+
   return (
-    <div className="Home">
-      <Link to="/" className="title">
-        <h1>GeoGaunlet</h1>
-      </Link>
-
-      <p className="description">
-        {" "}
-        Test your geography knowledge on the following categories! 🌍
-      </p>
-
+    <div className="menu">
       <div className="games">
-        <Link to="/capital" className="game" state={{ countries: countries }}>
+        <Link
+          to="/capital"
+          className="game shake-text"
+          state={{ countries: countries }}
+        >
           <button>Capitals</button>
         </Link>
         <Link to="/flag" className="game" state={{ countries: countries }}>
@@ -63,26 +60,8 @@ const Home = () => {
           <button>Population</button>
         </Link>
       </div>
-
-      <div className="advisory">
-        <p>GeoGaunlet v2.0</p>
-        <p>||</p>
-        <p>
-          info used are from{" "}
-          <a
-            className="link"
-            href="https://restcountries.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            https://restcountries.com
-          </a>
-        </p>
-        <p>||</p>
-        <p>© Meji </p>
-      </div>
     </div>
   );
 };
 
-export default Home;
+export default Option;

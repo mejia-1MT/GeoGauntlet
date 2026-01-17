@@ -1,0 +1,39 @@
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: var(--black);
+}
+
+.games {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  & button {
+    all: unset;
+  }
+
+  & > * {
+    text-decoration: none;
+    margin: 0.5rem;
+  }
+
+  & .game {
+    background-color: white;
+    text-align: center;
+    padding: clamp(1.5rem, 2vw, 2rem) clamp(3rem, 5vw, 5rem);
+    font-size: clamp(1.5rem, 2vw, 1.5rem);
+    border-radius: 2rem;
+    color: var(--black);
+    outline: var(--black) solid 1px;
+    transition: all 0.1s ease-in-out;
+  }
+
+  & .game:hover {
+    background-color: var(--dark);
+  }
+}

@@ -1,11 +1,11 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Capital from "./pages/Capital";
-import Flag from "./pages/Flag";
-import Population from "./pages/Population";
+import Capital from "./pages/Capital/Capital";
+import Flag from "./pages/Flag/Flag";
+import Population from "./pages/Population/Population";
 
 function App() {
   const [key, setKey] = useState(0); // State to force remount

@@ -1,7 +1,7 @@
 export const fetchGif = async () => {
-  const apiKey = "hgBg4f9A8dE01tjfDZfNRHPqUb8dhA21"; // Replace with your actual API key
-  const query = "fail"; // You can customize the query
-  const limit = 50; // Fetch one GIF
+  const apiKey = "hgBg4f9A8dE01tjfDZfNRHPqUb8dhA21";
+  const query = "fail";
+  const limit = 50;
 
   const giphyApiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${query}&limit=${limit}`;
 
@@ -12,7 +12,7 @@ export const fetchGif = async () => {
     }
     const data = await response.json();
     return data.data[Math.floor(Math.random() * data.data.length)]?.images
-      ?.original?.url; // Return the GIF URL
+      ?.original?.url;
   } catch (error) {
     console.error("Failed to fetch GIF:", error);
   }

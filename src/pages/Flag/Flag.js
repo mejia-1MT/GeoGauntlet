@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Flag.css";
-import { fetchGif } from "../utilities/FetchGif";
+import { fetchGif } from "../../utilities/FetchGif";
 
-import Sent from "../assets/sent-stroke-rounded";
-import BackIcon from "../assets/arrow-left-01-stroke-rounded";
-import Modal from "../components/Modal";
+import Sent from "../../assets/sent-stroke-rounded";
+import BackIcon from "../../assets/arrow-left-01-stroke-rounded";
+import Modal from "../../components/Modal";
 
 const Flag = ({ handleTryAgain }) => {
   const { state } = useLocation();
@@ -23,8 +23,7 @@ const Flag = ({ handleTryAgain }) => {
   const countries = state.countries
     .filter((country) => country.name)
     .map((country) => country.name);
-  /*************  ✨ Codeium Command ⭐  *************/
-  /******  033f6f7f-d8d9-4d03-aa1c-4e366e0cc104  *******/
+
   const fillCountries = () => {
     const newList = [];
 

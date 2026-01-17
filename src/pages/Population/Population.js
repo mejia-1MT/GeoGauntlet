@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Population.css";
-import { fetchGif } from "../utilities/FetchGif";
+import { fetchGif } from "../../utilities/FetchGif";
 
-import BackIcon from "../assets/arrow-left-01-stroke-rounded";
-import Triangle from "../assets/triangle-stroke-rounded";
-import Modal from "../components/Modal"; // Import the Modal component
+import BackIcon from "../../assets/arrow-left-01-stroke-rounded";
+import Triangle from "../../assets/triangle-stroke-rounded";
+import Modal from "../../components/Modal"; // Import the Modal component
 
 const Population = ({ handleTryAgain }) => {
   let { state } = useLocation();

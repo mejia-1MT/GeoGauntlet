@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Capital.css";
-import { fetchGif } from "../utilities/FetchGif";
+import { fetchGif } from "../../utilities/FetchGif";
 
-import Sent from "../assets/sent-stroke-rounded";
-import BackIcon from "../assets/arrow-left-01-stroke-rounded";
-import Modal from "../components/Modal";
+import Sent from "../../assets/sent-stroke-rounded";
+import BackIcon from "../../assets/arrow-left-01-stroke-rounded";
+import Modal from "../../components/Modal";
 
 const Capital = ({ handleTryAgain }) => {
   let { state } = useLocation();
