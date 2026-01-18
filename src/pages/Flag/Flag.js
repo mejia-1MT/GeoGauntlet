@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Flag.css";
 import { fetchGif } from "../../utilities/FetchGif";
@@ -24,21 +24,19 @@ const Flag = ({ handleTryAgain }) => {
     .filter((country) => country.name)
     .map((country) => country.name);
 
-  const fillCountries = () => {
+  const fillCountries = useCallback(() => {
     const newList = [];
-
     while (newList.length < 20) {
       newList.push(
         state.countries[Math.floor(Math.random() * state.countries.length)]
       );
     }
-
     setCountryList(newList);
-  };
+  }, [state.countries]);
 
   useEffect(() => {
     fillCountries();
-  }, []);
+  }, [fillCountries]); // Only fill countries on mount
 
   const handleSubmit = async () => {
     console.log("submitted");
@@ -67,11 +65,15 @@ const Flag = ({ handleTryAgain }) => {
         }, 1000);
       }, 2000);
     } else {
-      const gifUrl = await fetchGif(); // Fetch the GIF URL
-      if (gifUrl) {
-        setModalVisible(true);
-        setModalGifUrl(gifUrl); // Store the GIF URL in state
-      }
+      // Wrong answer
+      // First, show the correct answer for 2 seconds
+      setTimeout(async () => {
+        const gifUrl = await fetchGif(); // fetch GIF after delay
+        if (gifUrl) {
+          setModalGifUrl(gifUrl);
+          setModalVisible(true); // show modal after delay
+        }
+      }, 1500); // 2-second delay
     }
   };
 

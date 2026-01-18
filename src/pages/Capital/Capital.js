@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Capital.css";
 import { fetchGif } from "../../utilities/FetchGif";
@@ -26,24 +26,19 @@ const Capital = ({ handleTryAgain }) => {
     .map((country) => country.capital)
     .flat();
 
-  const fillCountries = () => {
+  const fillCountries = useCallback(() => {
     const newList = [];
-
     while (newList.length < 20) {
-      const randomIndex = Math.floor(Math.random() * state.countries.length);
-      const selectedCountry = state.countries[randomIndex];
-
-      if (selectedCountry.capital) {
-        newList.push(selectedCountry);
-      }
+      newList.push(
+        state.countries[Math.floor(Math.random() * state.countries.length)]
+      );
     }
-
     setCountryList(newList);
-  };
+  }, [state.countries]);
 
   useEffect(() => {
     fillCountries();
-  }, []); // Only fill countries on mount
+  }, [fillCountries]); // Only fill countries on mount
 
   const handleChange = (e) => {
     const inputValue = e.target.value;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Population.css";
 import { fetchGif } from "../../utilities/FetchGif";
@@ -20,21 +20,19 @@ const Population = ({ handleTryAgain }) => {
   const [populationAnimate, setPopulationAnimate] = useState(false);
   const [modalVisible, setModalVisible] = useState(false); // State for modal visibility
   const [modalGifUrl, setModalGifUrl] = useState(""); // State for GIF URL
-  const fillCountries = () => {
+  const fillCountries = useCallback(() => {
     const newList = [];
-
     while (newList.length < 20) {
       newList.push(
         state.countries[Math.floor(Math.random() * state.countries.length)]
       );
     }
-
     setCountryList(newList);
-  };
+  }, [state.countries]); // <-- dependency array for useCallback
 
   useEffect(() => {
     fillCountries();
-  }, []); // Only fill countries on mount
+  }, [fillCountries]); // Only fill countries on mount
 
   const handleAnswer = async (answer, index) => {
     setAnswered(true);
