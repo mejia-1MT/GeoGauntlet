@@ -1,39 +1,108 @@
 .menu {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 
-  background-color: var(--black);
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.menu-closed {
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 0.8s;
+}
+
+.menu-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.close-menu {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  color: var(--pop);
 }
 
 .games {
   display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  flex-wrap: wrap;
+  width: 80%;
+  background-color: aqua;
+}
 
-  & button {
-    all: unset;
-  }
+.games-backdrop {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0; /* top:0; right:0; bottom:0; left:0 */
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-image: var(--default-backdrop);
+}
 
-  & > * {
-    text-decoration: none;
-    margin: 0.5rem;
-  }
+/* Show the hovered backdrop */
+.games-backdrop.backdrop-capital {
+  background-image: var(--capital-backdrop);
+}
 
-  & .game {
-    background-color: white;
-    text-align: center;
-    padding: clamp(1.5rem, 2vw, 2rem) clamp(3rem, 5vw, 5rem);
-    font-size: clamp(1.5rem, 2vw, 1.5rem);
-    border-radius: 2rem;
-    color: var(--black);
-    outline: var(--black) solid 1px;
-    transition: all 0.1s ease-in-out;
-  }
+.games-backdrop.backdrop-flag {
+  background-image: var(--flag-backdrop);
+}
 
-  & .game:hover {
-    background-color: var(--dark);
-  }
+.games-backdrop.backdrop-population {
+  background-image: var(--population-backdrop);
+}
+
+.game {
+  all: unset;
+  flex: 1 1 250px;
+
+  font-family: var(--title-font);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--light);
+  padding: 0 clamp(3rem, 5vw, 5rem);
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.footnote {
+  all: unset;
+  color: var(--light);
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  font-size: clamp(1rem, 2vw, 2rem);
+  font-weight: 500;
+  z-index: 1;
+}
+
+.game,
+.footnote {
+  overflow: hidden;
+}
+
+.game > h3,
+.footnote > h4 {
+  transform: translateY(200px);
+  transition: transform 0.8s ease 0.4s;
+}
+
+.menu-open .game > h3,
+.menu-open .footnote > h4 {
+  transform: translateY(0);
+}
+
+.menu-closed .game > h3,
+.menu-closed .footnote > h4 {
+  transition-delay: 0s;
 }

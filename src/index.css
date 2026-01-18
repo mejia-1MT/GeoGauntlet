@@ -18,6 +18,11 @@
   --medium: 2.5rem;
   --large: 3rem;
   --larger: 3.5rem;
+
+  --default-backdrop: url("./assets/default-backdrop.jpg");
+  --capital-backdrop: url("./assets/capital-backdrop.jpg");
+  --flag-backdrop: url("./assets/flags-backdrop.jpg");
+  --population-backdrop: url("./assets/population-backdrop.jpg");
 }
 
 body {
@@ -26,4 +31,16 @@ body {
   color: var(--black);
   height: 100%;
   margin: 0;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden; /* invisible but still loaded */
+  background-image: url("./assets/default-backdrop.jpg"),
+    url("./assets/capital-backdrop.jpg"), url("./assets/flags-backdrop.jpg"),
+    url("./assets/population-backdrop.jpg");
 }
