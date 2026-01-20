@@ -28,7 +28,7 @@ const Population = ({ handleTryAgain }) => {
       );
     }
     setCountryList(newList);
-  }, [state.countries]); // <-- dependency array for useCallback
+  }, [state.countries]);
 
   useEffect(() => {
     fillCountries();
@@ -64,11 +64,15 @@ const Population = ({ handleTryAgain }) => {
         }, 1000);
       }, 2000);
     } else {
-      const gifUrl = await fetchGif(); // Fetch the GIF URL
-      if (gifUrl) {
-        setModalVisible(true);
-        setModalGifUrl(gifUrl); // Store the GIF URL in state
-      }
+      // Wrong answer
+      // First, show the correct answer for 2 seconds
+      setTimeout(async () => {
+        const gifUrl = await fetchGif(); // fetch GIF after delay
+        if (gifUrl) {
+          setModalGifUrl(gifUrl);
+          setModalVisible(true); // show modal after delay
+        }
+      }, 1500); // 2-second delay
     }
   };
 
